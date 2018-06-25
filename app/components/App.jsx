@@ -1,25 +1,13 @@
 import React, { Component } from 'react'
 import Profile from './Profile.jsx'
 import AddProfile from './AddProfile.jsx'
+import { getProfiles } from '../utils/profileApi'
 
 export default class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      profiles: [
-        {
-          name: 'Joe',
-          age: 30,
-          bio: 'like to walk under the rain on a beach',
-          hobbies: ['hiking', 'swimming']
-        },
-        {
-          name: 'Sarah',
-          age: 21,
-          bio: 'party like crazy with friends all night',
-          hobbies: ['drinking', 'netflix']
-        }
-      ]
+      profiles: []
     }
     // not so magic but ugly
     this.addUser = this.addUser.bind(this)
@@ -30,7 +18,14 @@ export default class App extends Component {
     this.setState({
       profiles: this.state.profiles.concat([ newProfile ])
     });
+  }
 
+  componentDidMount() {
+    getProfiles().then(profiles => {
+      this.setState({
+        profiles
+      })
+    })
   }
 
   render() {
