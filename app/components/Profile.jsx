@@ -2,26 +2,20 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 
 const Title = styled.h1`
-  font-size: 1.5em;
+  font-size: 2em;
   color: lime;
 `
+let Profile = props => (
+  <div>
+    <Title>
+      { props.name } Age: { props.age }
+    </Title>
+    <p>{ props.bio }</p>
+    <h3>Hobbies:</h3>
+    <ul>
+      { props.hobbies.map(hobby => <li>{ hobby }</li>) }
+    </ul>
+  </div>
+)
 
-export default class Profile extends Component {
-  render () {
-    let hobbies = this.props.hobbies.map(hobby => {
-      return <li>{ hobby }</li>
-    })
-    return (
-      <div>
-        <Title>
-          <h1>{ this.props.name } Age: {this.props.age}</h1>
-        </Title>
-        <p>{ this.props.bio }</p>
-        <h3>Hobbies:</h3>
-        <ul>
-          { hobbies }
-        </ul>
-      </div>
-    )
-  }
-}
+export default Profile
