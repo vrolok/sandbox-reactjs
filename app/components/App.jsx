@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import Profile from './Profile.jsx'
 import AddProfile from './AddProfile.jsx'
 import { getProfiles } from '../utils/profileApi'
+import { Parent } from './Children.jsx'
+import WrapedComponent from './HOCExample.jsx'
 
 export default class App extends Component {
   constructor(props) {
@@ -44,6 +46,8 @@ export default class App extends Component {
       <div>
         { profiles }
         <AddProfile addUser={this.addUser} />
+        <Parent>Parent</Parent>
+        <WrapedComponent />
       </div>
     )
   }
